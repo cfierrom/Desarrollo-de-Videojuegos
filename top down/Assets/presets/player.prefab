@@ -43,19 +43,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 241870222483601773}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4ccc7aeeda577b47b0a6b335cdc3743, type: 3}
+  m_Script: {fileID: 11500000, guid: 9cfa5b4adc095f640b6af74408d7f8d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   groundLayer:
     serializedVersion: 2
-    m_Bits: 1
-  velocidadMov: 100
-  velocidadRot: 1
+    m_Bits: 0
+  velocidadMov: 166
+  velocidadRot: 10
   can_rotate: 1
   "da\xF1ado": 0
   mov: {x: 0, y: 0, z: 0}
-  shot: {x: 0, y: 0, z: 0}
   camara: {fileID: 0}
+  luz: {fileID: 0}
 --- !u!136 &241870222483601769
 CapsuleCollider:
   m_ObjectHideFlags: 0

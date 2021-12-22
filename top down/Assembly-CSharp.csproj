@@ -53,11 +53,11 @@
     <UnityVersion>2020.3.21f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\scripts\driverCamara.cs" />
     <Compile Include="Assets\scripts\Director_IA.cs" />
-    <Compile Include="Assets\scripts\driverGulybad.cs" />
-    <Compile Include="Assets\scripts\DriverSpawn.cs" />
-    <Compile Include="Assets\scripts\DriverPlaterCharacter.cs" />
+    <Compile Include="Assets\scripts\gulybad.cs" />
+    <Compile Include="Assets\scripts\character.cs" />
+    <Compile Include="Assets\scripts\camara.cs" />
+    <Compile Include="Assets\scripts\spawn.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

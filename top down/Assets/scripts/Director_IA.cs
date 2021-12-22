@@ -8,8 +8,8 @@ public class Director_IA : MonoBehaviour
     public Transform objetivo; //hace referencia al jugador, de esta forma se sabe donde esta en todo momento 
     public Vector3 target; //esta es una variable probablemente temporal que solo se usa para no andar extrallendo la posicion del jugador cada vez que se necesita 
     public GameObject spawn;  //se crea para que se tenga un registro de que es un spawn 
-    public GameObject mob;    //o un mob, de preferencia se ocupan prefabs para asi poder destruir el original en el juego sin que eso altere algo en el resto del proyecto
-    public GameObject vacio; //se presentaba un problema con la gestion de la lista por temas de ir liverando sus miembros, asi que opte por crear un transform vacio que no afectara en nada, so esto es un NULL 
+    public GameObject mob;    //o un mob, se ocuparan mas adelante cuando se termine la creacion de entidades. 
+    public GameObject vacio;
 
     [Header("GESTION de los mobs")]
     [Range(9, 1000)]
@@ -23,23 +23,23 @@ public class Director_IA : MonoBehaviour
     int cant_spawn; //cantidad actual
     public List<GameObject> spawns_list; //listado para gestionarlos
 
-    [Header("GESTION de la UI v1")]
-    public GameObject infotext;
-    GameObject text_info;
+
 
     void Start()
     {
+        cant_enemys = 0;
         max_spawn = 5;
-        cant_spawn = spawns_list.Count;
+        cant_spawn = 0;
+        //mobs_list.AddRange(GameObject.FindGameObjectsWithTag("mobs")); //addrange se usa para agregar arreglos a la lista, esto agrega todos los mobs que ya existan 
         cant_enemys = mobs_list.Count;
         target = objetivo.position;
-        //text_info = infotext.GetComponent<Text>();
+
+
     }
 
     void Update()
     {
         act_target_pos();
-
     }
 
     void act_target_pos(){ //esta funcion actualiza la posicion del jugador en cada paso 
@@ -65,10 +65,4 @@ public class Director_IA : MonoBehaviour
         Destroy(mobs_list[index]);
         mobs_list[index] = vacio;
     }
-
-    private void ActCantEnemy()
-    {
-
-    }
-
 }
