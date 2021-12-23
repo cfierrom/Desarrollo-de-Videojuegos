@@ -47,7 +47,7 @@ public class Director_IA : MonoBehaviour
         for (int i = 0; i < mobs_list.Count; i++){
             if (mobs_list[i].gameObject.tag == "mobs")
             {
-                mobs_list[i].gameObject.GetComponent<gulybad>().Set_target(target);
+                mobs_list[i].gameObject.GetComponent<gulybad>().Set_target(objetivo.position);
             }
         }
     }
@@ -55,8 +55,8 @@ public class Director_IA : MonoBehaviour
     public void crear_mob(Vector3 coor, Transform place){
         GameObject aux = Instantiate(mob, coor, Quaternion.identity,place);
         aux.gameObject.name = "mob"+(mobs_list.Count + 1);
+        aux.gameObject.GetComponent<gulybad>().ID = mobs_list.Count - 1;
         mobs_list.Add(aux);
-        aux.gameObject.GetComponent<gulybad>().ID = mobs_list.Count-1;
     }
 
     public void matamob(int index){

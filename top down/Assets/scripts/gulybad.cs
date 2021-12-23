@@ -11,7 +11,7 @@ public class gulybad : MonoBehaviour
     [Range(0, 4)]
     public int selected_move = 4; //numero que indica hacia donde se mueve el mob
     [Range(10, 100)]
-    public int vel_desplazamiento; //numero que indica la velocidad de desplazamiendo
+    public int vel_desplazamiento =10; //numero que indica la velocidad de desplazamiendo
     Rigidbody MOV; //variable que controla la fisica 
 
     [Header("not public")]
@@ -27,12 +27,8 @@ public class gulybad : MonoBehaviour
 
     void Start()
     {
-        direcciones.Add(Vector3.forward*vel_desplazamiento);    //0  up
-        direcciones.Add(-Vector3.forward * vel_desplazamiento); //1  down 
-        direcciones.Add(Vector3.right * vel_desplazamiento);    //2  right
-        direcciones.Add(Vector3.left * vel_desplazamiento);     //3  left 
-        direcciones.Add(Vector3.zero);     //4 ninguno
         MOV = this.GetComponent<Rigidbody>();
+        
     }
 
     // Update is called once per frame
@@ -49,10 +45,10 @@ public class gulybad : MonoBehaviour
 
     void direct_ver_state()//de momento esta parte es inutil pero se usa para mantener el estado de las direcciones o sea si una direccion es factible o no 
     {  
-        verDir[0] = !Physics.Raycast(transform.position, direcciones[0], dist_vision);
-        verDir[1] = !Physics.Raycast(transform.position, direcciones[1], dist_vision);
-        verDir[2] = !Physics.Raycast(transform.position, direcciones[2], dist_vision);
-        verDir[3] = !Physics.Raycast(transform.position, direcciones[3], dist_vision);
+        verDir[0] = !Physics.Raycast(transform.position, direcciones[0], dist_vision); //0  up
+        verDir[1] = !Physics.Raycast(transform.position, direcciones[1], dist_vision); //1  down 
+        verDir[2] = !Physics.Raycast(transform.position, direcciones[2], dist_vision); //2  right 
+        verDir[3] = !Physics.Raycast(transform.position, direcciones[3], dist_vision); //3  left 
     }
 
     public void Set_target(Vector3 aux)//metodo utilizado para cambiar el target actual, es solo de acceso
@@ -89,8 +85,8 @@ public class gulybad : MonoBehaviour
 
     public void interactuar()
     {
+            GameObject.FindGameObjectWithTag("hivequeen").transform.GetComponent<Director_IA>().matamob(ID);
+  
         
-        //transform.name = "muerto";
-        GameObject.FindGameObjectWithTag("hivequeen").transform.GetComponent<Director_IA>().matamob(ID);
     }
 }

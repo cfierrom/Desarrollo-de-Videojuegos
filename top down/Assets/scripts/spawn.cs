@@ -12,7 +12,7 @@ public class spawn : MonoBehaviour
     // Start is called before the first frame update
     void Start(){
         centro = transform.position;
-        for (int i = 0; i < GameObject.Find("director").gameObject.GetComponent<Director_IA>().max_enemy; i++)
+        for (int i = 0; i < GameObject.FindGameObjectWithTag("hivequeen").gameObject.GetComponent<Director_IA>().max_enemy; i++)
         {
             CrearBastago();
         }

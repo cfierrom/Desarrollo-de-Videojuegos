@@ -21,6 +21,7 @@ public class camara : MonoBehaviour
         //offset.y = 0;
         this.transform.position = new Vector3( (poscams.position.x + offset.x) , (this.transform.position.y + offset.y) , (poscams.position.z+offset.z) );
 
+
     }
 
 

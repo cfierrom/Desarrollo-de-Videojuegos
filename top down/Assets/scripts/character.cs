@@ -82,7 +82,7 @@ public class character : MonoBehaviour
             {
                 //Debug.Log("\npos0: "+pos0+"\tforward: "+frente);
                 Debug.DrawRay(pos0, frente * 10000, Color.magenta);
-                if (HitInfo.transform.tag == tagTarget)
+                if (HitInfo.transform.tag == "mobs")
                 {
                     HitInfo.transform.GetComponent<gulybad>().interactuar();
                 }

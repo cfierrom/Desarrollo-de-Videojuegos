@@ -123,14 +123,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 7710251341215159966}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a2152614a6314541b60db36a2dc4630, type: 3}
+  m_Script: {fileID: 11500000, guid: efcda8595e7edeb4a815774a0381ce25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dist_vision: 5
   selected_move: 4
   vel_desplazamiento: 10
   target: {x: 0, y: 0, z: 0}
-  direcciones: []
+  direcciones:
+  - {x: 0, y: 0, z: 1}
+  - {x: 0, y: 0, z: -1}
+  - {x: 1, y: 0, z: 0}
+  - {x: -1, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
   verDir: 01010101
   vida: 4
   ID: 0
