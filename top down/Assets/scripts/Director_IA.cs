@@ -45,7 +45,7 @@ public class Director_IA : MonoBehaviour
     void act_target_pos(){ //esta funcion actualiza la posicion del jugador en cada paso 
         target = objetivo.position;
         for (int i = 0; i < mobs_list.Count; i++){
-            if (mobs_list[i].gameObject.tag == "mobs")
+            if (mobs_list[i])
             {
                 mobs_list[i].gameObject.GetComponent<gulybad>().Set_target(objetivo.position);
             }
@@ -55,7 +55,7 @@ public class Director_IA : MonoBehaviour
     public void crear_mob(Vector3 coor, Transform place){
         GameObject aux = Instantiate(mob, coor, Quaternion.identity,place);
         aux.gameObject.name = "mob"+(mobs_list.Count + 1);
-        aux.gameObject.GetComponent<gulybad>().ID = mobs_list.Count - 1;
+        aux.gameObject.GetComponent<gulybad>().ID = mobs_list.Count;
         mobs_list.Add(aux);
     }
 
@@ -63,6 +63,6 @@ public class Director_IA : MonoBehaviour
 
         //mobs_list.Remove(mobs_list[index]);
         Destroy(mobs_list[index]);
-        mobs_list[index] = vacio;
+        mobs_list[index] = null;
     }
 }

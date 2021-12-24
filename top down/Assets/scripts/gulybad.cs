@@ -38,9 +38,12 @@ public class gulybad : MonoBehaviour
 
         Set_velocity();
         MOV.AddForce(direcciones[selected_move]);
-        
         //MOV.AddForce(direcciones[selected_move] * vel_desplazamiento); //por algun motivo esta funcion no trabaja como deberia 
         selector_dir();
+        if (Input.GetButton("Fire3"))
+        {
+            Debug.Log("HOLa:"+name);
+        }
     }
 
     void direct_ver_state()//de momento esta parte es inutil pero se usa para mantener el estado de las direcciones o sea si una direccion es factible o no 
@@ -85,8 +88,16 @@ public class gulybad : MonoBehaviour
 
     public void interactuar()
     {
+        if (vida >= 1)
+        {
+            vida--;
+            Debug.Log(name + ": " + "vida menos");
+        }
+        else
+        {
             GameObject.FindGameObjectWithTag("hivequeen").transform.GetComponent<Director_IA>().matamob(ID);
-  
+        }
         
+
     }
 }

@@ -10,20 +10,20 @@ public class character : MonoBehaviour
     [Range(100f,1000f)] public float velocidadMov = 0.25f; //la velocidad a la que se desplaza
     [Range(0f, 10f)] public float velocidadRot = 10; //que tan sensible es la rotacion (posiblemente es temporal)
     [SerializeField] private bool can_rotate = true; // si la funcion de rotar esta disponible
-    Rigidbody MotFis; //esto se usa para acceder al rigidbody del cuerpo
     [SerializeField] private Vector3 mov; //vector de movimiento
 
     [Header("daño y vida")]
     [SerializeField] private bool dañado; //indica sido dañado recientemente
     public int vidaActual; //cantidad de puntos de vida actual
     [SerializeField] private int vidaMax = 10; //cantidad maxima de puntos de vida que puede tener el jugador 
+
     [Header("componentes y accesos directos")]
     public Camera camara;
+    Rigidbody MotFis; //esto se usa para acceder al rigidbody del cuerpo
+
     [Header("TEMPORALES")]
     public Light luz;
 
-    public string tagTarget = string.Empty;
-    
     void Start(){
         MotFis = this.GetComponent<Rigidbody>(); //declara el motfis (el motfis resibe su nombre de MOTor de FISicas)
     }
@@ -73,7 +73,7 @@ public class character : MonoBehaviour
 
     private void disparar()
     {
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButtonDown("Fire1"))
         {
             Vector3 pos0 = transform.position;
             Vector3 frente = transform.forward;
@@ -85,6 +85,9 @@ public class character : MonoBehaviour
                 if (HitInfo.transform.tag == "mobs")
                 {
                     HitInfo.transform.GetComponent<gulybad>().interactuar();
+                }
+                if (HitInfo.transform.tag == "spawns"){
+                    HitInfo.transform.GetComponent<spawn>().interactuar();
                 }
             }
         }

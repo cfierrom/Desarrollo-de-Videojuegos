@@ -26,6 +26,11 @@ public class spawn : MonoBehaviour
 
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(centro, area_de_creacion);
+    }
 
     void CrearBastago(){
 
@@ -34,8 +39,8 @@ public class spawn : MonoBehaviour
         
     }
 
-    private void OnDrawGizmos(){
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(centro, area_de_creacion);
+    public void interactuar()
+    {
+    
     }
 }

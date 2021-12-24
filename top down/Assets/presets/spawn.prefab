@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3649018869511047520}
   m_Layer: 0
   m_Name: spawn
-  m_TagString: Untagged
+  m_TagString: spawns
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   area_de_creacion: 10
-  bastago: {fileID: 0}
+  bastago: {fileID: 7710251341215159966, guid: 717c4b45a16c28b44854ca5549a9e178, type: 3}
   ubicacion: {fileID: 0}
 --- !u!1 &3649018870150460617
 GameObject:
