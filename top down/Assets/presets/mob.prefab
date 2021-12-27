@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d6dd711ab7e8b174495ec96b9ece89bb, type: 2}
+  - {fileID: 2100000, guid: 124faf0b4643ac340842d3b23945ca6c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -137,7 +137,7 @@ MonoBehaviour:
   - {x: -1, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   verDir: 01010101
-  vida: 4
+  vida: 1
   ID: 0
 --- !u!65 &7710251341215159942
 BoxCollider:

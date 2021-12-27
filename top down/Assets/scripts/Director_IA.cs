@@ -14,7 +14,7 @@ public class Director_IA : MonoBehaviour
     [Header("GESTION de los mobs")]
     [Range(9, 1000)]
     public int max_enemy; //cantidad maxima de mobs que puede haber 
-    int cant_enemys; //cantidad actual
+    [SerializeField] private int cant_enemys; //cantidad actual
     public List<GameObject> mobs_list; //listado para gestionarlos
 
     [Header("GESTION de los spawn")]
@@ -22,14 +22,11 @@ public class Director_IA : MonoBehaviour
     public int max_spawn; //cantidad maxima de spawns que puede haber 
     int cant_spawn; //cantidad actual
     public List<GameObject> spawns_list; //listado para gestionarlos
-
-
+    public int areaCreacion;
+    Vector3 area ;
 
     void Start()
     {
-        cant_enemys = 0;
-        max_spawn = 5;
-        cant_spawn = 0;
         //mobs_list.AddRange(GameObject.FindGameObjectsWithTag("mobs")); //addrange se usa para agregar arreglos a la lista, esto agrega todos los mobs que ya existan 
         cant_enemys = mobs_list.Count;
         target = objetivo.position;
@@ -40,6 +37,7 @@ public class Director_IA : MonoBehaviour
     void Update()
     {
         act_target_pos();
+        area = new Vector3(areaCreacion,1,areaCreacion);
     }
 
     void act_target_pos(){ //esta funcion actualiza la posicion del jugador en cada paso 
@@ -57,6 +55,7 @@ public class Director_IA : MonoBehaviour
         aux.gameObject.name = "mob"+(mobs_list.Count + 1);
         aux.gameObject.GetComponent<gulybad>().ID = mobs_list.Count;
         mobs_list.Add(aux);
+        cant_enemys++;
     }
 
     public void matamob(int index){
@@ -64,5 +63,20 @@ public class Director_IA : MonoBehaviour
         //mobs_list.Remove(mobs_list[index]);
         Destroy(mobs_list[index]);
         mobs_list[index] = null;
+        cant_enemys--;
     }
-}
+
+    public void crear_spawn()
+    {
+
+    }
+
+    private void OnDrawGizmos(){
+
+        Gizmos.color = Color.yellow;
+        //Gizmos.DrawWireCube(Vector3.zero, area);
+        Gizmos.DrawCube(new Vector3(0,1,0), area);
+
+        }
+
+    }

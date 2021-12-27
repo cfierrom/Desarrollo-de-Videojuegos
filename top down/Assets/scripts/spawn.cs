@@ -5,13 +5,17 @@ using UnityEngine;
 public class spawn : MonoBehaviour
 {
    
-    public float area_de_creacion = 10;
-    public GameObject bastago;
-    public Transform ubicacion;
+    public float area_de_creacion = 10; //area que tiene para crear entidades al rededor suyo 
+    public Transform ubicacion; //esta variable se utiliza 
     Vector3 centro = new Vector3(30,1,10);
+    //private GameObject hivemind;
+
     // Start is called before the first frame update
     void Start(){
         centro = transform.position;
+
+
+
         for (int i = 0; i < GameObject.FindGameObjectWithTag("hivequeen").gameObject.GetComponent<Director_IA>().max_enemy; i++)
         {
             CrearBastago();
