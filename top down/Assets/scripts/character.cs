@@ -21,11 +21,13 @@ public class character : MonoBehaviour
     public Camera camara;
     Rigidbody MotFis; //esto se usa para acceder al rigidbody del cuerpo
 
-    [Header("TEMPORALES")]
-    public Light luz;
+    //[Header("TEMPORALES")]
+    //public bool cargaMunicion;
+
 
     void Start(){
         MotFis = this.GetComponent<Rigidbody>(); //declara el motfis (el motfis resibe su nombre de MOTor de FISicas)
+        vidaActual = vidaMax;
     }
 
     void Update(){
@@ -41,6 +43,12 @@ public class character : MonoBehaviour
         }
 
         disparar();
+
+        if (vidaActual == 0)
+        {
+            GameObject.FindGameObjectWithTag("hivequeen").gameObject.GetComponent<Director_IA>().FailState(this.gameObject);
+           
+        }
 
     }
    
@@ -82,15 +90,22 @@ public class character : MonoBehaviour
             {
                 //Debug.Log("\npos0: "+pos0+"\tforward: "+frente);
                 Debug.DrawRay(pos0, frente * 10000, Color.magenta);
+                this.gameObject.GetComponent<Animator>().SetTrigger("disparar");
                 if (HitInfo.transform.tag == "mobs")
                 {
                     HitInfo.transform.GetComponent<gulybad>().interactuar();
                 }
                 if (HitInfo.transform.tag == "spawns"){
+                    
                     HitInfo.transform.GetComponent<spawn>().interactuar();
                 }
             }
         }
+    }
+
+    public void recibirDanio()
+    {
+        vidaActual--;
     }
     
 }

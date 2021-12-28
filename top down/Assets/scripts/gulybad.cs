@@ -10,13 +10,13 @@ public class gulybad : MonoBehaviour
 
     [Range(0, 4)]
     public int selected_move = 4; //numero que indica hacia donde se mueve el mob
-    [Range(10, 100)]
+    [Range(1, 100)]
     public int vel_desplazamiento =10; //numero que indica la velocidad de desplazamiendo
     Rigidbody MOV; //variable que controla la fisica 
 
     [Header("not public")]
-    public Vector3 target; //su objetivo
-    public List<Vector3> direcciones; //vectores direccionales
+    [SerializeField]private Vector3 target; //su objetivo
+    [SerializeField] List<Vector3> direcciones; //vectores direccionales
 
     [Header("de momento sin uso o en testing")]
     public List<bool> verDir; //verificadores de si ese sitio es factible
@@ -40,9 +40,14 @@ public class gulybad : MonoBehaviour
         MOV.AddForce(direcciones[selected_move]);
         //MOV.AddForce(direcciones[selected_move] * vel_desplazamiento); //por algun motivo esta funcion no trabaja como deberia 
         selector_dir();
-        if (Input.GetButton("Fire3"))
-        {
-            Debug.Log("HOLa:"+name);
+    
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player"){
+           // Debug.Log(this.name + " ABISSAL SCREAM NOICES");
+            collision.gameObject.GetComponent<character>().recibirDanio();
         }
     }
 
@@ -88,10 +93,10 @@ public class gulybad : MonoBehaviour
 
     public void interactuar()
     {
-        if (vida >= 1)
+        if (vida > 1)
         {
             vida--;
-            Debug.Log(name + ": " + "vida menos");
+            //Debug.Log(name + ": vida menos");
         }
         else
         {

@@ -23,7 +23,9 @@ public class Director_IA : MonoBehaviour
     int cant_spawn; //cantidad actual
     public List<GameObject> spawns_list; //listado para gestionarlos
     public int areaCreacion;
-    Vector3 area ;
+
+    private Vector3 area ;
+
 
     void Start()
     {
@@ -38,6 +40,14 @@ public class Director_IA : MonoBehaviour
     {
         act_target_pos();
         area = new Vector3(areaCreacion,1,areaCreacion);
+        if (Input.GetButtonDown("Fire3"))
+        {
+            crear_spawn();
+        }
+        {
+
+        }
+
     }
 
     void act_target_pos(){ //esta funcion actualiza la posicion del jugador en cada paso 
@@ -66,16 +76,36 @@ public class Director_IA : MonoBehaviour
         cant_enemys--;
     }
 
-    public void crear_spawn()
+    private void crear_spawn()
     {
+        Vector3 pos = transform.position + new Vector3(Random.Range(-(areaCreacion / 2), (areaCreacion / 2)), 0, Random.Range(-(areaCreacion / 2), (areaCreacion / 2)));
+        GameObject aux = Instantiate(spawn, pos, Quaternion.identity);
+        aux.gameObject.name = "spawn " + (spawns_list.Count);
+        aux.gameObject.GetComponent<spawn>().ID = spawns_list.Count;
+        spawns_list.Add(aux);
+        cant_spawn++;
+    }
 
+    public void mataSpawn(int index)
+    {
+        Destroy(spawns_list[index]);
+        spawns_list[index] = null;
+        cant_spawn--;
+
+    }
+
+    public void FailState(GameObject aux){
+
+        Debug.Log("muerto");
+        aux.gameObject.GetComponent<character>().vidaActual = 10;
+        //Destroy(aux);
     }
 
     private void OnDrawGizmos(){
 
         Gizmos.color = Color.yellow;
         //Gizmos.DrawWireCube(Vector3.zero, area);
-        Gizmos.DrawCube(new Vector3(0,1,0), area);
+        //Gizmos.DrawCube(new Vector3(0,1,0), area);
 
         }
 

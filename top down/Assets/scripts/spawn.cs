@@ -8,12 +8,15 @@ public class spawn : MonoBehaviour
     public float area_de_creacion = 10; //area que tiene para crear entidades al rededor suyo 
     public Transform ubicacion; //esta variable se utiliza 
     Vector3 centro = new Vector3(30,1,10);
-    //private GameObject hivemind;
+    public int ID = 0;
+    public int vidaMax = 20;
+    [SerializeField]private int vidaActual;
+
 
     // Start is called before the first frame update
     void Start(){
         centro = transform.position;
-
+        vidaActual = vidaMax;
 
 
         for (int i = 0; i < GameObject.FindGameObjectWithTag("hivequeen").gameObject.GetComponent<Director_IA>().max_enemy; i++)
@@ -45,6 +48,14 @@ public class spawn : MonoBehaviour
 
     public void interactuar()
     {
-    
+        if (vidaActual > 1)
+        {
+            vidaActual--;
+        }
+        else
+        {
+            GameObject.FindGameObjectWithTag("hivequeen").transform.GetComponent<Director_IA>().mataSpawn(ID);
+        }
+
     }
 }
